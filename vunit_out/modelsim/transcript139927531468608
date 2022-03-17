@@ -1,0 +1,41 @@
+# do /home/borg/.local/lib/python3.8/site-packages/vunit/sim_if/tcl_read_eval_loop.tcl
+# vsim -modelsimini /home/borg/Desktop/projet1/Z01.1-Hersheys/vunit_out/modelsim/modelsim.ini -wlf /home/borg/Desktop/projet1/Z01.1-Hersheys/vunit_out/test_output/lib.tb_and16.all_67f8b0b4b21d5bd0e4aa37b46d244e59c8104249/modelsim/vsim.wlf -quiet -t ps -onfinish stop lib.tb_and16(tb) -L vunit_lib -L lib -g/tb_and16/runner_cfg="active python runner : true,enabled_test_cases : ,output path : /home/borg/Desktop/projet1/Z01.1-Hersheys/vunit_out/test_output/lib.tb_and16.all_67f8b0b4b21d5bd0e4aa37b46d244e59c8104249/,tb path : /home/borg/Desktop/projet1/Z01.1-Hersheys/Projetos/B-LogicaCombinacional/testes/,use_color : true" 
+# Start time: 20:11:45 on Mar 17,2022
+# ** Warning: Design size of 21436 statements exceeds ModelSim-Intel FPGA Starter Edition recommended capacity.
+# Expect performance to be adversely affected.
+# Break in Subprogram stop at /home/borg/.local/lib/python3.8/site-packages/vunit/vhdl/core/src/stop_body_2008p.vhd line 13
+# Stopped at /home/borg/.local/lib/python3.8/site-packages/vunit/vhdl/core/src/stop_body_2008p.vhd line 13
+# End time: 20:11:45 on Mar 17,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+# vsim -modelsimini /home/borg/Desktop/projet1/Z01.1-Hersheys/vunit_out/modelsim/modelsim.ini -wlf /home/borg/Desktop/projet1/Z01.1-Hersheys/vunit_out/test_output/lib.tb_not16.all_b66b8fc9277e1e3933979f97f1cdc6fc5d49fe3e/modelsim/vsim.wlf -quiet -t ps -onfinish stop lib.tb_not16(tb) -L vunit_lib -L lib -g/tb_not16/runner_cfg="active python runner : true,enabled_test_cases : ,output path : /home/borg/Desktop/projet1/Z01.1-Hersheys/vunit_out/test_output/lib.tb_not16.all_b66b8fc9277e1e3933979f97f1cdc6fc5d49fe3e/,tb path : /home/borg/Desktop/projet1/Z01.1-Hersheys/Projetos/B-LogicaCombinacional/testes/,use_color : true" 
+# Start time: 20:11:45 on Mar 17,2022
+# ** Warning: Design size of 21385 statements exceeds ModelSim-Intel FPGA Starter Edition recommended capacity.
+# Expect performance to be adversely affected.
+# Break in Subprogram stop at /home/borg/.local/lib/python3.8/site-packages/vunit/vhdl/core/src/stop_body_2008p.vhd line 13
+# Stopped at /home/borg/.local/lib/python3.8/site-packages/vunit/vhdl/core/src/stop_body_2008p.vhd line 13
+# End time: 20:11:46 on Mar 17,2022, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 1
+# vsim -modelsimini /home/borg/Desktop/projet1/Z01.1-Hersheys/vunit_out/modelsim/modelsim.ini -wlf /home/borg/Desktop/projet1/Z01.1-Hersheys/vunit_out/test_output/lib.tb_dmux8way.all_cd99140b7e67911c824fd741770dff369a28e4ff/modelsim/vsim.wlf -quiet -t ps -onfinish stop lib.tb_dmux8way(tb) -L vunit_lib -L lib -g/tb_dmux8way/runner_cfg="active python runner : true,enabled_test_cases : ,output path : /home/borg/Desktop/projet1/Z01.1-Hersheys/vunit_out/test_output/lib.tb_dmux8way.all_cd99140b7e67911c824fd741770dff369a28e4ff/,tb path : /home/borg/Desktop/projet1/Z01.1-Hersheys/Projetos/B-LogicaCombinacional/testes/,use_color : true" 
+# Start time: 20:11:46 on Mar 17,2022
+# ** Warning: Design size of 21576 statements exceeds ModelSim-Intel FPGA Starter Edition recommended capacity.
+# Expect performance to be adversely affected.
+# Break in Subprogram stop at /home/borg/.local/lib/python3.8/site-packages/vunit/vhdl/core/src/stop_body_2008p.vhd line 13
+# Stopped at /home/borg/.local/lib/python3.8/site-packages/vunit/vhdl/core/src/stop_body_2008p.vhd line 13
+# End time: 20:11:46 on Mar 17,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+# vsim -modelsimini /home/borg/Desktop/projet1/Z01.1-Hersheys/vunit_out/modelsim/modelsim.ini -wlf /home/borg/Desktop/projet1/Z01.1-Hersheys/vunit_out/test_output/lib.tb_mux4way16.all_db1759aed647a09d3ab18e63fb0bb636943a1df6/modelsim/vsim.wlf -quiet -t ps -onfinish stop lib.tb_mux4way16(tb) -L vunit_lib -L lib -g/tb_mux4way16/runner_cfg="active python runner : true,enabled_test_cases : ,output path : /home/borg/Desktop/projet1/Z01.1-Hersheys/vunit_out/test_output/lib.tb_mux4way16.all_db1759aed647a09d3ab18e63fb0bb636943a1df6/,tb path : /home/borg/Desktop/projet1/Z01.1-Hersheys/Projetos/B-LogicaCombinacional/testes/,use_color : true" 
+# Start time: 20:11:46 on Mar 17,2022
+# ** Warning: Design size of 21419 statements exceeds ModelSim-Intel FPGA Starter Edition recommended capacity.
+# Expect performance to be adversely affected.
+# Break in Subprogram stop at /home/borg/.local/lib/python3.8/site-packages/vunit/vhdl/core/src/stop_body_2008p.vhd line 13
+# Stopped at /home/borg/.local/lib/python3.8/site-packages/vunit/vhdl/core/src/stop_body_2008p.vhd line 13
+# End time: 20:11:46 on Mar 17,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+# vsim -modelsimini /home/borg/Desktop/projet1/Z01.1-Hersheys/vunit_out/modelsim/modelsim.ini -wlf /home/borg/Desktop/projet1/Z01.1-Hersheys/vunit_out/test_output/lib.tb_detectordemoedas.all_6c8fae528d5219e6532570151119ee6d6191a5d7/modelsim/vsim.wlf -quiet -t ps -onfinish stop lib.tb_detectordemoedas(tb) -L vunit_lib -L lib -g/tb_detectordemoedas/runner_cfg="active python runner : true,enabled_test_cases : ,output path : /home/borg/Desktop/projet1/Z01.1-Hersheys/vunit_out/test_output/lib.tb_detectordemoedas.all_6c8fae528d5219e6532570151119ee6d6191a5d7/,tb path : /home/borg/Desktop/projet1/Z01.1-Hersheys/Projetos/B-LogicaCombinacional/testes/,use_color : true" 
+# Start time: 20:11:46 on Mar 17,2022
+# ** Warning: Design size of 21414 statements exceeds ModelSim-Intel FPGA Starter Edition recommended capacity.
+# Expect performance to be adversely affected.
+# Break in Subprogram stop at /home/borg/.local/lib/python3.8/site-packages/vunit/vhdl/core/src/stop_body_2008p.vhd line 13
+# Stopped at /home/borg/.local/lib/python3.8/site-packages/vunit/vhdl/core/src/stop_body_2008p.vhd line 13
+# End time: 20:11:46 on Mar 17,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
