@@ -35,6 +35,8 @@ entity ALU is
 			ny:    in STD_LOGIC;                     -- inverte a entrada y
 			f:     in STD_LOGIC;                     -- se 0 calcula x & y, senão x + y
 			no:    in STD_LOGIC;                     -- inverte o valor da saída
+			dir:   in STD_LOGIC;					 -- dir direcao esquerda (0), direita (1)
+			size:  in STD_LOGIC_VECTOR(15 downto 0); -- qtd de deslocamento
 			zr:    out STD_LOGIC;                    -- setado se saída igual a zero
 			ng:    out STD_LOGIC;                    -- setado se saída é negativa
 			saida: out STD_LOGIC_VECTOR(15 downto 0) -- saída de dados da ALU
@@ -93,9 +95,31 @@ architecture  rtl OF alu is
 		);
 	end component;
 
+	component BarrelShifter16 is
+		port ( 
+			a:    in  STD_LOGIC_VECTOR(15 downto 0);   -- input vector
+			dir:  in  std_logic;                       -- 0=>left 1=>right
+			size: in  std_logic_vector(3 downto 0);    -- shift amount
+			q:    out STD_LOGIC_VECTOR(15 downto 0));  -- output vector (shifted)
+	end component;
+	
+
    SIGNAL zxout,zyout,nxout,nyout,andout,adderout,muxout,precomp: std_logic_vector(15 downto 0);
+
 
 begin
   -- Implementação vem aqui!
-
+  a0: zerador16 port map (zx, x, zxout);
+  a1: zerador16 port map (zy, y, zyout);
+  a2: inversor16 port map (nx, zxout, nxout);
+  a3: inversor16 port map (ny, zyout, nyout);
+  a4: And16 port map (nxout, nyout, andout);
+  a5: Add16 port map (nxout, nyout, adderout);
+  a6: Mux16 port map (andout, adderout, f, muxout);
+  a7: inversor16 port map (no, muxout, precomp);
+  a8: comparador16 port map (precomp, zr, ng);
+  
+  u0: BarrelShifter16 port map(precomp, dir, size, q)
+  
+  saida <= q;
 end architecture;
