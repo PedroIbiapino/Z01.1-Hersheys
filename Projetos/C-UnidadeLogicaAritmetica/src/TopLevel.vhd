@@ -61,8 +61,9 @@ end component;
 			f:     in STD_LOGIC_VECTOR(1 downto 0);                     -- se 0 calcula x & y, senão x + y
 			no:    in STD_LOGIC;                     -- inverte o valor da saída
 			zr:    out STD_LOGIC;                    -- setado se saída igual a zero
-			ng:    out STD_LOGIC;                    -- setado se saída é negativa
-			saida: out STD_LOGIC_VECTOR(15 downto 0) -- saída de dados da ALU
+			ng:    out STD_LOGIC;                    -- setado se saída é negativa 
+			saida: out STD_LOGIC_VECTOR(15 downto 0); -- saída de dados da ALU
+			estouro : out STD_LOGIC
 	);
   end component;
 	 
@@ -73,7 +74,7 @@ signal saida: STD_LOGIC_VECTOR(15 downto 0); -- saída de dados da ALU
 begin
   -- ULA
       ula : ALU port map(
-      x => "0000000000000000",
+      x => "0000000000000001",
       y  => "1111111111111111",
       zx => SW(0),   ---- zerador x
       nx => SW(1),   -- inversor de x
@@ -83,7 +84,8 @@ begin
       no => SW(6),  -- inversor out 
       zr => LEDR(0), -- saida do comparador
       ng => LEDR(1),  -- com
-      saida => saida
+      saida => saida,
+		estouro => LEDR(9)
       );
 
 
