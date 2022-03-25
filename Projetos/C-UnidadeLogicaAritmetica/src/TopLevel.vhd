@@ -73,8 +73,8 @@ signal saida: STD_LOGIC_VECTOR(15 downto 0); -- saída de dados da ALU
 begin
   -- ULA
       ula : ALU port map(
-      x =>"0001000100010001",
-      y  => "0001000100010001",
+      x => "0000000000000000",
+      y  => "1111111111111111",
       zx => SW(0),   ---- zerador x
       nx => SW(1),   -- inversor de x
       zy => SW(2),   -- zerador de y
