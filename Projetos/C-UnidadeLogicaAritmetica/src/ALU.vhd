@@ -68,8 +68,8 @@ architecture  rtl OF alu is
 			a   :  in STD_LOGIC_VECTOR(15 downto 0);
 			b   :  in STD_LOGIC_VECTOR(15 downto 0);
 			q   : out STD_LOGIC_VECTOR(15 downto 0);
-			carry : out STD_LOGIC_VECTOR(15 downto 0)
-		);
+			carry_out : out STD_LOGIC
+		);			
 	end component;
 
 	component And16 is
@@ -116,7 +116,7 @@ architecture  rtl OF alu is
 	
 
    SIGNAL zxout,zyout,nxout,nyout,andout,adderout,muxout,precomp,xorout, final: std_logic_vector(15 downto 0);
-
+   SIGNAL carryout : std_logic;
    begin
 	-- Implementação vem aqui!
 	
@@ -125,14 +125,13 @@ architecture  rtl OF alu is
 	  a2: inversor16 port map (nx, zxout, nxout);
 	  a3: inversor16 port map (ny, zyout, nyout);
 	  a4: And16 port map (nxout, nyout, andout);
-	  a5: Add16 port map (nxout, nyout, adderout);
+	  a5: Add16 port map (nxout, nyout, adderout, carryout);
 	  a6: Xor16 port map(nxout, nyout,xorout);
 	  a7: Mux16 port map (andout, adderout, xorout, f, muxout);
 	  a8: inversor16 port map (no, muxout, precomp);
 	  a9: comparador16 port map (precomp, zr, ng);
 	  a10: BarrelShifter16 port map (precomp, dir, size, final);
-	  estouro <= '1' when (f='1' AND carry(15)='1') else '0';
-
+	  estouro <= carryout when f="01" else '0';
 	  saida <= final;
   
   end architecture;

@@ -65,6 +65,7 @@ end component;
 			saida: out STD_LOGIC_VECTOR(15 downto 0) -- saída de dados da ALU
       dir:   in STD_LOGIC;					 -- dir direcao esquerda (0), direita (1)
 			size:  in STD_LOGIC_VECTOR(15 downto 0) -- qtd de deslocamento
+			estouro : out STD_LOGIC
 	);
   end component;
 	 
@@ -75,7 +76,7 @@ signal saida: STD_LOGIC_VECTOR(15 downto 0); -- saída de dados da ALU
 begin
   -- ULA
       ula : ALU port map(
-      x => "0000000000000000",
+      x => "0000000000000001",
       y  => "1111111111111111",
       zx => SW(0),   ---- zerador x
       nx => SW(1),   -- inversor de x
@@ -88,6 +89,7 @@ begin
       saida => saida,
       dir => SW(9),
       size => "001"
+		  estouro => LEDR(9)
       );
 
 
