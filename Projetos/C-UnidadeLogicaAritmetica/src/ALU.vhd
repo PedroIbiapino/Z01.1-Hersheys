@@ -37,8 +37,10 @@ entity ALU is
 			no:    in STD_LOGIC;                     -- inverte o valor da saída
 			zr:    out STD_LOGIC;                    -- setado se saída igual a zero
 			ng:    out STD_LOGIC;                    -- setado se saída é negativa
-			saida: out STD_LOGIC_VECTOR(15 downto 0) -- saída de dados da ALU
-			estouro: out STD_LOGIC_VECTOR(15 downto 0)
+			saida: out STD_LOGIC_VECTOR(15 downto 0); -- saída de dados da ALU
+			estouro: out STD_LOGIC_VECTOR(15 downto 0);
+			dir:   in STD_LOGIC;					 -- dir direcao esquerda (0), direita (1)
+			size:  in STD_LOGIC_VECTOR(15 downto 0) -- qtd de deslocamento
 	);
 end entity;
 
@@ -103,9 +105,17 @@ architecture  rtl OF alu is
 		);
 	end component;
 
+	component BarrelShifter16 is
+		port ( 
+			a:    in  STD_LOGIC_VECTOR(15 downto 0);   -- input vector
+			dir:  in  std_logic;                       -- 0=>left 1=>right
+			size: in  std_logic_vector(2 downto 0);    -- shift amount
+			q:    out STD_LOGIC_VECTOR(15 downto 0));  -- output vector (shifted)
+	end component;
+
 	
 
-   SIGNAL zxout,zyout,nxout,nyout,andout,adderout,muxout,precomp,xorout: std_logic_vector(15 downto 0);
+   SIGNAL zxout,zyout,nxout,nyout,andout,adderout,muxout,precomp,xorout, final: std_logic_vector(15 downto 0);
 
    begin
 	-- Implementação vem aqui!
@@ -120,8 +130,9 @@ architecture  rtl OF alu is
 	  a7: Mux16 port map (andout, adderout, xorout, f, muxout);
 	  a8: inversor16 port map (no, muxout, precomp);
 	  a9: comparador16 port map (precomp, zr, ng);
+	  a10: BarrelShifter16 port map (precomp, dir, size, final);
 	  estouro <= '1' when (f='1' AND carry(15)='1') else '0';
 
-	  saida <= precomp;
+	  saida <= final;
   
   end architecture;

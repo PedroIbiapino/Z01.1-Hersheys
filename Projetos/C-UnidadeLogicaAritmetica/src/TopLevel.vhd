@@ -63,6 +63,8 @@ end component;
 			zr:    out STD_LOGIC;                    -- setado se saída igual a zero
 			ng:    out STD_LOGIC;                    -- setado se saída é negativa
 			saida: out STD_LOGIC_VECTOR(15 downto 0) -- saída de dados da ALU
+      dir:   in STD_LOGIC;					 -- dir direcao esquerda (0), direita (1)
+			size:  in STD_LOGIC_VECTOR(15 downto 0) -- qtd de deslocamento
 	);
   end component;
 	 
@@ -83,7 +85,9 @@ begin
       no => SW(6),  -- inversor out 
       zr => LEDR(0), -- saida do comparador
       ng => LEDR(1),  -- com
-      saida => saida
+      saida => saida,
+      dir => SW(9),
+      size => "001"
       );
 
 
