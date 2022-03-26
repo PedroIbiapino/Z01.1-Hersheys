@@ -117,7 +117,7 @@ begin
   a5: Add16 port map (nxout, nyout, adderout);
   a6: Mux16 port map (andout, adderout, f, muxout);
   a7: inversor16 port map (no, muxout, precomp);
-  a8: comparador16 port map (precomp, zr, ng);
+  a8: comparador16 port map (q, zr, ng);
   
   u0: BarrelShifter16 port map(precomp, dir, size, q);
   
