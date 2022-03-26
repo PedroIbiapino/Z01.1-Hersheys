@@ -37,7 +37,7 @@ architecture rtl of TopLevel is
 -- signals
 --------------
 
-  signal saida : std_logic_vector(15 downto 0); -- 115
+ 
 
 
 --------------
@@ -55,7 +55,7 @@ architecture rtl of TopLevel is
       f:     in STD_LOGIC;                     -- se 0 calcula x & y, senão x + y
       no:    in STD_LOGIC;                     -- inverte o valor da saída
       dir:   in STD_LOGIC;					 -- dir direcao esquerda (0), direita (1)
-      size:  in STD_LOGIC_VECTOR(3 downto 0); -- qtd de deslocamento
+      size:  in STD_LOGIC_VECTOR(2 downto 0); -- qtd de deslocamento
       zr:    out STD_LOGIC;                    -- setado se saída igual a zero
       ng:    out STD_LOGIC;                    -- setado se saída é negativa
       saida: out STD_LOGIC_VECTOR(15 downto 0) -- saída de dados da ALU
@@ -68,7 +68,7 @@ architecture rtl of TopLevel is
         leds: out STD_LOGIC_VECTOR(6 downto 0));
   end component;
 
-
+ signal saida : std_logic_vector(15 downto 0); -- 115
 ---------------
 -- implementacao
 ---------------
@@ -76,7 +76,7 @@ begin
 
   ula: ALU port map(
     x => "0000000000000001" ,
-    y => "0000000000000001",
+    y => "1111111111111111",
     zx => SW(0),
     nx => SW(1),
     zy => SW(2),
@@ -84,7 +84,7 @@ begin
     f => SW(4),
     no => SW(5),
     dir => SW(6),
-    size => "0001",
+    size => SW(7) & SW(8) & SW(9),
     zr => LEDR(0),
     ng => LEDR(1),
     saida => saida
