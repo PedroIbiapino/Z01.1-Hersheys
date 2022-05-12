@@ -54,7 +54,7 @@ architecture arch of CPU is
       );
   end component;
 
-  component pc is
+  component PC is
     port(
       clock     : in  STD_LOGIC;
       increment : in  STD_LOGIC;
@@ -102,10 +102,10 @@ begin
   Control : ControlUnit port map(instruction, c_zr, c_ng, c_muxALUI_A, c_muxAM, c_zx, c_nx, c_zy, c_ny, c_f, c_no, c_loadA, c_loadD, writeM, c_loadPC);
   muxALU : Mux16 port map (s_ALUout, instruction(15 downto 0), c_muxALUI_A, s_muxALUI_Aout);
   A : Register16 port map (clock, s_muxALUI_Aout, c_loadA, s_regAout);
-  muxAM: Mux16 port map (s_regAout, inM, c_muxALUI_A, s_muxAM_out);
+  muxAM : Mux16 port map (s_regAout, inM, c_muxALUI_A, s_muxAM_out);
   D : Register16 port map (clock, s_muxALUI_Aout, c_loadD, s_regDout);
-  ULA: ALU port map (s_regDout, s_muxAM_out, c_zx, c_nx, c_zy, c_ny, c_f, c_no, c_zr, c_ng, s_ALUout);
-  pc: pc port map(clock, '1', c_loadPC, reset, s_regAout, s_pcout);
+  ULA : ALU port map (s_regDout, s_muxAM_out, c_zx, c_nx, c_zy, c_ny, c_f, c_no, c_zr, c_ng, s_ALUout);
+  programcounter : PC port map(clock, '1', c_loadPC, reset, s_regAout, s_pcout);
 
   outM <= s_ALUout;
   pcout <= s_pcout(14 downto 0);
