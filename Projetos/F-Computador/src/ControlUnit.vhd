@@ -20,6 +20,7 @@ entity ControlUnit is
 		muxAM                       : out STD_LOGIC;                     -- mux que seleciona entre
                                                                      -- reg. A e Mem. RAM para ALU
                                                                      -- A  e Mem. RAM para ALU
+    muxDS                       : out STD_LOGIC;                     -- mux que seleciona entre reg D ou S
 		zx, nx, zy, ny, f, no       : out STD_LOGIC;                     -- sinais de controle da ALU
 		loadA, loadD, loadM, loadPC : out STD_LOGIC               -- sinais de load do reg. A,
                                                                      -- reg. D, Mem. RAM e Program Counter
@@ -29,6 +30,20 @@ end entity;
 architecture arch of ControlUnit is
 
 begin
+
+loadD <= instruction(17) and instruction(4);
+loadA <= (instruction(17) and instruction(3)) or (not instruction(17));
+loadM <= instruction(17) and instruction(5);
+muxALUI_A <= not(instruction(17));
+muxAM <= instruction(17) and instruction(13);
+muxDS <= instruction(17) and instruction(14);
+zx <= instruction(17) and instruction(12);
+nx <= instruction(17) and instruction(11);
+zy <= instruction(17) and instruction(10);
+ny <= instruction(17) and instruction(9);
+f <= instruction(17) and instruction(8);
+no <= instruction(17) and instruction(7);
+loadPC <= (instruction(17) and instruction(0) and not(zr) and not(ng)) or (instruction(17) and instruction(1) and zr) or (instruction(17) and instruction(2) and ng);
 
 
 end architecture;
