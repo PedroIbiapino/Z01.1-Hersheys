@@ -37,7 +37,6 @@ public class Code {
             while (output.length() < 4){
                 output = '0' + output;
             }
-            System.out.println(output);
             return output;
         }
     	return "";
@@ -53,44 +52,234 @@ public class Code {
         String r0 = "";
         boolean flag = false;
         String op = mnemnonic[0];
-        for (String symbol: mnemnonic){
-            if (symbol.equals("(%A)")) {
-                r0 = "1";
-                flag = true;
-            }
+        if (mnemnonic.length == 1){
+            return "000001100";
         }
-        if (!flag){
-            r0 = "0";
+        if (op.equals("nop")){
+            return "";
         }
 
+        String calc = "";
         if (op.equals("movw")){
             String origin = mnemnonic[1];
-            String calc;
-            switch (origin) {
-                case "%A": calc = "110000";
-                case "(%A)": calc = "110000";
-                case "%D": calc = "001100";
+            if (origin.equals("(%A)")){
+                flag = true;
+                r0 = "1";
+            } else {
+                flag = false;
+                r0 = "0";
             }
-        }
 
-        if (op.equals("addw")){
+            if (origin.equals("%A") || origin.equals("(%A)")){
+                calc = "110000";
+            } else if (origin.equals("%D")){
+                calc = "001100";
+            }
+        } else if (op.equals("addw")){
             String a = mnemnonic[1];
             String b = mnemnonic[2];
-            String destiny = mnemnonic[3];
-            if (flag) {
 
-            } else{
-                //
+            if (a.equals("(%A)") || b.equals("(%A)")){
+                flag = true;
+                r0 = "1";
+            } else {
+                flag = false;
+                r0 = "0";
             }
 
+            String destiny = mnemnonic[3];
+            if (!flag) {
+                if ((a.equals("%D") && b.equals("%A")) || (a.equals("%A") && b.equals("%D"))){
+                    calc = "000010";
+                } else if ((a.equals("$1") && b.equals("%A")) || (a.equals("%A") && b.equals("$1"))) {
+                    calc = "110111";
+                } else {
+                    calc = "011111";
+                }
+            } else {
+                if ((a.equals("%D") && b.equals("(%A)")) || (a.equals("(%A)") && b.equals("%D"))){
+                    calc = "000010";
+                } else if ((a.equals("$1") && b.equals("(%A)")) || (a.equals("(%A)") && b.equals("$1"))) {
+                    calc = "110111";
+                }
+            }
+
+        } else if (op.equals("incw")) {
+
+            String origin = mnemnonic[1];
+            if (origin.equals("(%A)")){
+                flag = true;
+                r0 = "1";
+            } else {
+                flag = false;
+                r0 = "0";
+            }
+
+            String destiny = mnemnonic[1];
+            if (!flag){
+                if (destiny.equals("%D")) {
+                    calc = "011111";
+                } else {
+                    calc = "110111";
+                }
+            } else{
+                calc = "110111";
+            }
+        } else if(op.equals("subw")){
+            String a = mnemnonic[1];
+            String b = mnemnonic[2];
+
+            if (a.equals("(%A)") || b.equals("(%A)")){
+                flag = true;
+                r0 = "1";
+            } else {
+                flag = false;
+                r0 = "0";
+            }
+
+            if (!flag){
+                if (a.equals("%D") && b.equals("%A")){
+                    calc = "010011";
+                } else if (a.equals("%A") && b.equals("%D")){
+                    calc = "000111";
+                }
+            } else {
+                if (a.equals("%D") && b.equals("(%A)")){
+                    calc = "010011";
+                } else if (a.equals("(%A)") && b.equals("%D")){
+                    calc = "000111";
+                } else if ((a.equals("(%A)") && b.equals("$1")) || (b.equals("(%A)") && a.equals("$1"))){
+                    calc = "110010";
+
+                }
+            }
+        } else if (op.equals("rsubw")){
+            String b = mnemnonic[1];
+            String a = mnemnonic[2];
+
+            if (a.equals("(%A)") || b.equals("(%A)")){
+                flag = true;
+                r0 = "1";
+            } else {
+                flag = false;
+                r0 = "0";
+            }
+
+            if (!flag){
+                if (a.equals("%D") && b.equals("%A")){
+                    calc = "010011";
+                } else if (a.equals("%A") && b.equals("%D")){
+                    calc = "000111";
+                }
+            } else {
+                if (a.equals("%D") && b.equals("(%A)")){
+                    calc = "010011";
+                } else if (a.equals("(%A)") && b.equals("%D")){
+                    calc = "000111";
+                }
+            }
+        } else if (op.equals("decw")){
+
+            String origin = mnemnonic[1];
+            if (origin.equals("(%A)")){
+                flag = true;
+                r0 = "1";
+            } else {
+                flag = false;
+                r0 = "0";
+            }
+
+            String destiny = origin;
+            if (!flag){
+                if (destiny.equals("%D")) {
+                    calc = "001110";
+                } else {
+                    calc = "110010";
+                }
+            } else {
+                calc = "110111";
+            }
+        } else if (op.equals("notw")) {
+
+            String origin = mnemnonic[1];
+            if (origin.equals("(%A)")){
+                flag = true;
+                r0 = "1";
+            } else {
+                flag = false;
+                r0 = "0";
+            }
+
+            String symbol = origin;
+            if (symbol.equals("%A") || symbol.equals("(%A)")){
+                calc = "110001";
+            } else if (symbol.equals("%D")){
+                calc = "001101";
+            }
+        } else if (op.equals("negw")) {
+            String origin = mnemnonic[1];
+            if (origin.equals("(%A)")){
+                flag = true;
+                r0 = "1";
+            } else {
+                flag = false;
+                r0 = "0";
+            }
+
+            String symbol = origin;
+            if (symbol.equals("%A") || symbol.equals("(%A)")) {
+                calc = "110011";
+            } else if (symbol.equals("%D")) {
+                calc = "001111";
+            }
+        } else if (op.equals("andw")){
+
+            String a = mnemnonic[1];
+            String b = mnemnonic[2];
+            if (a.equals("(%A)") || b.equals("(%A)")){
+                flag = true;
+                r0 = "1";
+            } else {
+                flag = false;
+                r0 = "0";
+            }
+
+            String destiny = mnemnonic[3];
+            if (!flag) {
+                if ((a.equals("%D") && b.equals("%A")) || (a.equals("%A") && b.equals("%D"))){
+                    calc = "000000";
+                }
+            } else {
+                if ((a.equals("%D") && b.equals("(%A)")) || (a.equals("(%A)") && b.equals("%D"))){
+                    calc = "000000";
+                }
+            }
+        } else if (op.equals("orw")){
+            String a = mnemnonic[1];
+            String b = mnemnonic[2];
+
+            if (a.equals("(%A)") || b.equals("(%A)")){
+                flag = true;
+                r0 = "1";
+            } else {
+                flag = false;
+                r0 = "0";
+            }
+
+            String destiny = mnemnonic[3];
+            if (!flag) {
+                if ((a.equals("%D") && b.equals("%A")) || (a.equals("%A") && b.equals("%D"))){
+                    calc = "010101";
+                }
+            } else {
+                if ((a.equals("%D") && b.equals("(%A)")) || (a.equals("(%A)") && b.equals("%D"))){
+                    calc = "010101";
+                }
+            }
         }
 
-
-
-
-
-
-    	return "";
+        output = output + r0 + calc;
+        return output;
     }
 
     /**
