@@ -143,7 +143,6 @@ public class Assemble {
                     if(Code.jump(parser.instruction(parser.command()))!="000"){
                         isJump = true;
                     }
-
                     break;
                 default:
                     instruction = "000000000000000000";
@@ -156,7 +155,8 @@ public class Assemble {
                         nopFlag = true;
                     }
                     else{
-                        System.out.println("Nop nao existe no codigo");
+                        outHACK.println("100000011000000000");
+                        System.out.println("Acrescentando nop caso nao tenha");
                         nopFlag = false;
                         isJump = false;
                     }
@@ -169,9 +169,7 @@ public class Assemble {
 
                 outHACK.println(instruction);
             }
-
             instruction = null;
-
         }
     }
 

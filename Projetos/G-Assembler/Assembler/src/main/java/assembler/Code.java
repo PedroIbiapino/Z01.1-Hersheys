@@ -57,7 +57,7 @@ public class Code {
             return "000001100";
         }
         if (op.equals("nop")){
-            return "";
+            return "000001100";
         }
 
         String calc = "";
