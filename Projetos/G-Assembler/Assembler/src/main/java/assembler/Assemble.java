@@ -21,7 +21,8 @@ public class Assemble {
     private PrintWriter outHACK = null;    // grava saida do código de máquina em Hack
     boolean debug;                         // flag que especifica se mensagens de debug são impressas
     private SymbolTable table;             // tabela de símbolos (variáveis e marcadores)
-
+    private boolean nopFlag;
+    private boolean isJump;
     /*
      * inicializa assembler
      * @param inFile
@@ -36,6 +37,8 @@ public class Assemble {
         outHACK    = new PrintWriter(new FileWriter(hackFile));  // Cria saída do print para
         // o arquivo hackfile
         table      = new SymbolTable();                          // Cria e inicializa a tabela de simbolos
+        nopFlag = false;
+        isJump=false;
     }
 
     /**
@@ -136,6 +139,9 @@ public class Assemble {
                     System.out.println(Code.jump(parser.instruction(parser.command())));
                     System.out.println(" - ");
                     instruction = "10" + Code.comp(parser.instruction(parser.command())) + Code.dest(parser.instruction(parser.command())) + Code.jump(parser.instruction(parser.command()));
+                    if(Code.jump(parser.instruction(parser.command()))!="000"){
+                        isJump = true;
+                    }
                     break;
                 default:
                     instruction = "000000000000000000";
@@ -143,10 +149,32 @@ public class Assemble {
             }
             // Escreve no arquivo .hack a instrução
             if(outHACK!=null) {
+                if(isJump && (instruction =="100000011000000000")){
+                    if(nopFlag = false){
+                        nopFlag = true;
+                    }
+                    else{
+                        outHACK.println("100000011000000000");
+                        System.out.println("Acrescentando nop caso nao tenha");
+                        nopFlag = false;
+                        isJump = false;
+                    }
+
+                }
+                else{
+                    isJump = false;
+                    System.out.println("Nop ja foi implementado no codigo");
+                }
+
                 outHACK.println(instruction);
             }
+            instruction = null;
+
+
         }
     }
+
+
 
     /**
      * Fecha arquivo de escrita
