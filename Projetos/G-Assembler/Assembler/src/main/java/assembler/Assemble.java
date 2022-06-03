@@ -11,6 +11,7 @@ package assembler;
 
 import java.io.*;
 
+
 /**
  * Faz a geração do código gerenciando os demais módulos
  */
@@ -20,7 +21,8 @@ public class Assemble {
     private PrintWriter outHACK = null;    // grava saida do código de máquina em Hack
     boolean debug;                         // flag que especifica se mensagens de debug são impressas
     private SymbolTable table;             // tabela de símbolos (variáveis e marcadores)
-
+    private boolean nopFlag;
+    private boolean isJump;
     /*
      * inicializa assembler
      * @param inFile
@@ -33,8 +35,10 @@ public class Assemble {
         inputFile  = inFile;
         hackFile   = new File(outFileHack);                      // Cria arquivo de saída .hack
         outHACK    = new PrintWriter(new FileWriter(hackFile));  // Cria saída do print para
-                                                                 // o arquivo hackfile
+        // o arquivo hackfile
         table      = new SymbolTable();                          // Cria e inicializa a tabela de simbolos
+        nopFlag = false;
+        isJump=false;
     }
 
     /**
@@ -55,11 +59,16 @@ public class Assemble {
         while (parser.advance()){
             if (parser.commandType(parser.command()) == Parser.CommandType.L_COMMAND) {
                 String label = parser.label(parser.command());
-                /* TODO: implementar */
+                boolean contem = table.contains(label);
+                if (contem == false) {
+                    table.addEntry(label, romAddress);
+                }
                 // deve verificar se tal label já existe na tabela,
                 // se não, deve inserir. Caso contrário, ignorar.
             }
-            romAddress++;
+            else {
+                romAddress++;
+            }
         }
         parser.close();
 
@@ -74,7 +83,11 @@ public class Assemble {
             if (parser.commandType(parser.command()) == Parser.CommandType.A_COMMAND) {
                 String symbol = parser.symbol(parser.command());
                 if (Character.isDigit(symbol.charAt(0))){
-                    /* TODO: implementar */
+                    boolean contem =  table.contains(symbol);
+                    if (contem == false) {
+                        table.addEntry(symbol, ramAddress);
+                        ramAddress++;
+                    }
                     // deve verificar se tal símbolo já existe na tabela,
                     // se não, deve inserir associando um endereço de
                     // memória RAM a ele.
@@ -104,21 +117,63 @@ public class Assemble {
          */
         while (parser.advance()){
             switch (parser.commandType(parser.command())){
-                /* TODO: implementar */
+                case A_COMMAND:
+                    String binario = "";
+                    String symbol = parser.symbol(parser.command());
+                    try {
+                        binario = Code.toBinary(symbol);
+                    }
+
+                    catch (Exception e) {
+                        int n = table.getAddress(symbol);
+                        String n_string = Integer.toString(n);
+                        binario = Code.toBinary(n_string);
+                    }
+                    instruction = "00" + binario;
+                    System.out.println(instruction);
+                    System.out.println(" - ");
+                    break;
                 case C_COMMAND:
-                break;
-            case A_COMMAND:
-                break;
-            default:
-                continue;
+                    System.out.println(Code.comp(parser.instruction(parser.command())));
+                    System.out.println(Code.dest(parser.instruction(parser.command())));
+                    System.out.println(Code.jump(parser.instruction(parser.command())));
+                    System.out.println(" - ");
+                    instruction = "10" + Code.comp(parser.instruction(parser.command())) + Code.dest(parser.instruction(parser.command())) + Code.jump(parser.instruction(parser.command()));
+
+                    if(Code.jump(parser.instruction(parser.command()))!="000"){
+                        isJump = true;
+                    }
+                    break;
+                default:
+                    instruction = "000000000000000000";
+                    continue;
             }
             // Escreve no arquivo .hack a instrução
             if(outHACK!=null) {
+                if(isJump && (instruction =="100000011000000000")){
+                    if(nopFlag = false){
+                        nopFlag = true;
+                    }
+                    else{
+                        outHACK.println("100000011000000000");
+                        System.out.println("Acrescentando nop caso nao tenha");
+                        nopFlag = false;
+                        isJump = false;
+                    }
+
+                }
+                else{
+                    isJump = false;
+                    System.out.println("Nop ja foi implementado no codigo");
+                }
+
                 outHACK.println(instruction);
             }
             instruction = null;
         }
     }
+
+
 
     /**
      * Fecha arquivo de escrita
