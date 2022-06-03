@@ -53,5 +53,6 @@ jobs:
         python3 Projetos/C-UnidadeLogicaAritmetica/testeULA.py
         python3 Projetos/D-LogicaSequencial/testeLogicaSequencial.py
         python3 Projetos/G-Assembler/testeAssembler.py
+        python3 Projetos/I-VMtranslator/testeVMtranslator.py
         
     
