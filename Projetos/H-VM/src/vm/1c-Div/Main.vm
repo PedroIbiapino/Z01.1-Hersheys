@@ -11,9 +11,33 @@
 //
 //  assuma que temp 0> temp 1 e ambos inteiros
 // ----------------------------------
-
+// 9 - 3 = 6
+// 6 - 3 = 3
+// 3 - 3 = 0
 function Main.main 0
+push constant 0
+pop temp 3 
 
+label loop
+push temp 0 // 9
+
+push constant 0
+eq
+if-goto end
+push temp 0 // 9
+push temp 1 // 3
+sub
+pop temp 0 // 6
+
+
+push temp 3 // 0
+
+push constant 1
+add
+pop temp 3 //1
+
+
+goto loop
    
 label end
 

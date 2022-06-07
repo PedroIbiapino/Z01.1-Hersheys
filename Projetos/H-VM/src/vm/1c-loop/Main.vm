@@ -17,6 +17,27 @@
 
 function Main.main 0
 
+push constant 1
+pop temp 0
+
+push constant 0
+pop temp 3
+label loop
+push constant 55
+push temp 3
+eq
+if-goto end
+
+push temp 0
+push temp 3
+add
+pop temp 3
+goto loop
+
+label end
+
+
+
 
 
 // esse loop sempre deve existir!
