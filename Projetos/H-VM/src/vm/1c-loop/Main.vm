@@ -17,10 +17,31 @@
 
 function Main.main 0
 
-
+push constant 0
+pop temp 0         
+push constant 0
+pop temp 1
+label LOOP_START
+push temp 0
+push constant 55
+eq
+if-goto END       // se temp0 = 10 salta para o fim
+push temp 0
+push constant 1
+add
+pop temp 0
+push temp 1
+push constant 1
+add
+pop temp 1
+goto LOOP_START  // If counter > 0, goto LOOP_START
+label END
+push temp 1
+pop temp 3
 
 // esse loop sempre deve existir!
 // caso contrario o computador vai
 // executar lixo de memoria.
 label while
+
   goto while
