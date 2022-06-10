@@ -1,0 +1,125 @@
+// ---------------------------------  
+// ---------------------------------
+
+function Main.main 0
+
+
+
+
+push constant 0
+push constant 1
+
+push constant 0 // contador
+pop temp 3
+push constant 9
+pop temp 4
+
+label loop 
+    push temp 3
+    push temp 4
+    eq  
+    if-goto end
+
+    pop temp 1
+    pop temp 0
+
+    push temp 0
+    push temp 1
+
+    add
+
+    pop temp 2
+
+    push temp 0 
+    push temp 1
+    push temp 2
+
+    push temp 3
+    push constant 1
+    add
+    pop temp 3
+    goto loop
+label end
+push constant 0
+pop temp 5
+push constant 0
+pop temp 5
+
+// nao deve tirar isso!
+label while2
+    goto while2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+push constant 0 // F0
+push constant 1 // F1
+push constant 0 // Condição inicial
+pop temp 3      // Contador
+label LOOP_START
+push temp 3
+push constant 10 // Condição final
+eq
+if-goto END
+// loop
+pop temp 1
+pop temp 0
+
+push temp 0
+push temp 1
+add
+
+pop temp 2
+push temp 0
+push temp 1
+push temp 2
+//
+
+
+push temp 3
+push constant 1 // Incremento
+add
+pop temp 3
+
+
+
+goto LOOP_START  // If counter > 0, goto LOOP_START
+label END
+push constant 0
+and
+pop temp 4
+
+
+
+*/
