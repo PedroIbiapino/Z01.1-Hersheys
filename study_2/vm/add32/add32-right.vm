@@ -1,0 +1,65 @@
+function add32-right 6
+
+
+push argument 1
+push argument 3
+add
+pop local 5 ; Salva o resultado temporário
+
+; Aqui temos que verificar a existência do vai um
+
+//(RAM[0][15] = 1 E RAM[2][15] = 1) OU ----- local 0
+//(RAM[0][15] = 1 E RAM[2][15] = 0 E RAM[4][15] = 0) OU ---- local 2
+//(RAM[0][15] = 0 E RAM[2][15] = 1 E RAM[4][15] = 0) ---- local 4
+push argument 0
+push argument 2
+and
+pop local 0 ; Tem que ser negativo
+push constant 0
+push local 0
+gt
+if-goto SOMAUM
+
+
+push argument 0
+push argument 2
+and
+pop local 1
+push local 1
+push argument 4
+and
+pop local 2 ; Tem que ser positivo
+push constant 0
+push local 2
+gt
+if-goto SOMAUM
+
+
+;;;
+push argument 0
+push argument 2
+and
+pop local 3
+push local 3
+push argument 4
+and
+pop local 4 ; Tem que ser positivo
+push constant 0
+pop local 4
+gt
+if-goto SOMAUM
+
+
+
+goto END
+
+label SOMAUM:
+push local 5
+push constant 1
+add
+pop local 5
+
+label END:
+push local 5
+return 
+

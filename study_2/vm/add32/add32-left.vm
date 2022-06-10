@@ -1,0 +1,10 @@
+function add32-left 1
+// Soma o argumento 1 com o 3
+push argument 0
+push argument 2
+add
+pop local 0
+
+push local 0
+return
+
