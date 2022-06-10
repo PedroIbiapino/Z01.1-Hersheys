@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0b258a9-0f2f-4337-8fdc-5d62d209b34f" name="Default Changelist" comment="" />
+    <list default="true" id="f0b258a9-0f2f-4337-8fdc-5d62d209b34f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../H-VM/bin/nasm/2d-Calculadora.nasm" beforeDir="false" afterPath="$PROJECT_DIR$/../../H-VM/bin/nasm/2d-Calculadora.nasm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../H-VM/config_testes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../H-VM/config_testes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../H-VM/src/vm/2d-Calculadora/pow.vm" beforeDir="false" afterPath="$PROJECT_DIR$/../../H-VM/src/vm/2d-Calculadora/pow.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../I-VMTranslator/VMtranslator/VMTranslator.iml" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,7 +26,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../I-VMTranslator/VMtranslator/pom.xml" />
   </component>
   <component name="RunManager">
     <configuration name="AssembleTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">

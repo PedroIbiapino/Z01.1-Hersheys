@@ -130,7 +130,10 @@ public class Code {
             commands.add(String.format("; %d - PUSH %s %d", lineCode++ ,segment, index));
 
             if (segment.equals("constant")) {
-
+                String value = "$" + index;
+                String command_nasm = "movw " + value;
+                String output = command_nasm + ", %D";
+                commands.add(output);
             } else if (segment.equals("local")) {
 
             } else if (segment.equals("argument")) {
