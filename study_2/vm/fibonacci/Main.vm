@@ -1,0 +1,37 @@
+// ---------------------------------  
+// ---------------------------------
+
+function Main.main 0
+
+; Inicia o contador
+push constant 0
+pop temp 2
+
+push constant 0
+push constant 1
+
+label LOOP
+  pop temp 1 ; Sempre o último da pilha
+  pop temp 0
+  push temp 0
+  push temp 1
+  ; Os dois novos 
+  push temp 1
+  push temp 0
+  add
+
+; Adiciona um ao contador
+push constant 1
+push temp 2
+add
+pop temp 2
+
+; Verificar se o contador é maior que 9
+push temp 2
+push constant 9
+lt
+if-goto LOOP
+
+// nao deve tirar isso!
+label while2
+    goto while2

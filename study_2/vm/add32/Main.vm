@@ -1,0 +1,35 @@
+// ---------------------------------  
+// ---------------------------------
+
+function Main.main 0
+
+// os 16 bits menos significativos de um número W estão no endereço 256
+// Os 16 bits mais significativos de W estão no endereço 257
+
+// os 16 bits menos significativos de um número T estão no endereço 257
+// Os 16 bits mais significativos de T estão no endereço 257
+
+// Salvar nos últimos dois endereços da pilha a soma de W + T
+// O último endereço sãos os 16 bits mais significativos de W + T
+// O penúltimo endereço são os 16 bits menos significativos de W + T
+
+// A função add32-left deve retornar os 16 bits mais significativos de W + T
+
+// A função add32-right deve retornar os 16 bits menos significativos de W + T (ATENÇÃO PARA O VAIUM)
+
+push constant 3855 ; Mais significativo do número 1
+push constant 13107 ; Menos significativo do número 1
+push constant 13107 ; Mais significativo do número 2
+push constant 3855  ; Menos significativo do número 2
+call add32-left 4 ; 16 mais significativos da soma
+; Segunda parte
+push constant 3855 ; Mais significativo do número 1
+push constant 13107 ; Menos significativo do número 1
+push constant 13107 ; Mais significativo do número 2
+push constant 3855  ; Menos significativo do número 2
+call add32-right 4 ; Vai um será adicionado apenas aqui
+
+
+// nao deve tirar isso!
+label while2
+    goto while2

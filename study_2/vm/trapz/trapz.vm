@@ -1,0 +1,22 @@
+function trapz 1
+; Recebe 4 argumentos (x1, y1, x2 e y2)
+
+; Base menor é apenas x1
+
+push argument 3
+push argument 1
+sub
+pop local 0
+
+; Calcula a área
+; Soma as duas bases
+push argument 0
+push argument 2
+add
+; Multiplica pela Altura
+push local 0
+call mult 2
+; Divide pela 2
+push constant 2
+call div 2
+return
