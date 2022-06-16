@@ -1,1 +1,37 @@
-function pow 3
+
+//5**4
+//5*5*5*5
+function pow 2
+push argument 0 
+pop local 0 //local0 = 5
+push argument 1 // 4
+pop local 1 // local1 = 4
+push constant 1
+pop temp 1 // temp1 = 1
+push local 1
+push temp 1
+sub
+pop local 1 // local1 = 3
+
+label loop
+push local 0 //local0 =125
+push argument 0 //5
+
+call mult 2
+pop local 0 //local0 = 625
+
+push local 1
+push temp 1
+sub
+pop local 1 // local1 = 0
+
+push constant 0
+push local 1
+eq
+if-goto end
+goto loop
+label end
+push local 0
+return
+
+

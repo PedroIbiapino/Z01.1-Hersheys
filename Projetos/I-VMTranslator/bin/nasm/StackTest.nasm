@@ -1,0 +1,502 @@
+; 0 - PUSH constant 17
+leaw $17,%A
+movw %A, %D
+leaw %SP,%A
+movw (%A), %A
+movw %D, (%A)
+leaw %SP,%A
+movw (%A),%D
+incw %D
+movw %D, (%A)
+; 1 - PUSH constant 17
+leaw $17,%A
+movw %A, %D
+leaw %SP,%A
+movw (%A), %A
+movw %D, (%A)
+leaw %SP,%A
+movw (%A),%D
+incw %D
+movw %D, (%A)
+; 2 - EQ
+leaw $SP, %A
+movw (%A), %D
+decw %D
+movw %D, (%A)
+movw (%A), %A
+movw (%A), %D
+leaw $SP, %A
+subw (%A),$1,%A
+subw (%A), %D, %D
+leaw $END1 %A
+je %D
+nop
+leaw $SP, %A
+subw (%A),$1,%A
+movw $0, (%A)
+leaw $END2, %A
+jmp
+nop
+END1:
+leaw $SP, %A
+subw (%A),$1,%A
+movw $-1,(%A)
+END2:
+; 3 - PUSH constant 17
+leaw $17,%A
+movw %A, %D
+leaw %SP,%A
+movw (%A), %A
+movw %D, (%A)
+leaw %SP,%A
+movw (%A),%D
+incw %D
+movw %D, (%A)
+; 4 - PUSH constant 16
+leaw $16,%A
+movw %A, %D
+leaw %SP,%A
+movw (%A), %A
+movw %D, (%A)
+leaw %SP,%A
+movw (%A),%D
+incw %D
+movw %D, (%A)
+; 5 - EQ
+leaw $SP, %A
+movw (%A), %D
+decw %D
+movw %D, (%A)
+movw (%A), %A
+movw (%A), %D
+leaw $SP, %A
+subw (%A),$1,%A
+subw (%A), %D, %D
+leaw $END1 %A
+je %D
+nop
+leaw $SP, %A
+subw (%A),$1,%A
+movw $0, (%A)
+leaw $END2, %A
+jmp
+nop
+END1:
+leaw $SP, %A
+subw (%A),$1,%A
+movw $-1,(%A)
+END2:
+; 6 - PUSH constant 16
+leaw $16,%A
+movw %A, %D
+leaw %SP,%A
+movw (%A), %A
+movw %D, (%A)
+leaw %SP,%A
+movw (%A),%D
+incw %D
+movw %D, (%A)
+; 7 - PUSH constant 17
+leaw $17,%A
+movw %A, %D
+leaw %SP,%A
+movw (%A), %A
+movw %D, (%A)
+leaw %SP,%A
+movw (%A),%D
+incw %D
+movw %D, (%A)
+; 8 - EQ
+leaw $SP, %A
+movw (%A), %D
+decw %D
+movw %D, (%A)
+movw (%A), %A
+movw (%A), %D
+leaw $SP, %A
+subw (%A),$1,%A
+subw (%A), %D, %D
+leaw $END1 %A
+je %D
+nop
+leaw $SP, %A
+subw (%A),$1,%A
+movw $0, (%A)
+leaw $END2, %A
+jmp
+nop
+END1:
+leaw $SP, %A
+subw (%A),$1,%A
+movw $-1,(%A)
+END2:
+; 9 - PUSH constant 892
+leaw $892,%A
+movw %A, %D
+leaw %SP,%A
+movw (%A), %A
+movw %D, (%A)
+leaw %SP,%A
+movw (%A),%D
+incw %D
+movw %D, (%A)
+; 10 - PUSH constant 891
+leaw $891,%A
+movw %A, %D
+leaw %SP,%A
+movw (%A), %A
+movw %D, (%A)
+leaw %SP,%A
+movw (%A),%D
+incw %D
+movw %D, (%A)
+; 11 - LT
+leaw $SP, %A
+movw (%A), %D
+decw %D
+movw %D, (%A)
+movw (%A), %A
+movw (%A), %D
+leaw $SP, %A
+subw (%A),$1,%A
+subw (%A), %D, %D
+leaw $END1 %A
+jl %D
+nop
+leaw $SP, %A
+subw (%A),$1,%A
+movw $0, (%A)
+leaw $END2, %A
+jmp
+nop
+END1:
+leaw $SP, %A
+subw (%A),$1,%A
+movw $-1,(%A)
+END2:
+; 12 - PUSH constant 891
+leaw $891,%A
+movw %A, %D
+leaw %SP,%A
+movw (%A), %A
+movw %D, (%A)
+leaw %SP,%A
+movw (%A),%D
+incw %D
+movw %D, (%A)
+; 13 - PUSH constant 892
+leaw $892,%A
+movw %A, %D
+leaw %SP,%A
+movw (%A), %A
+movw %D, (%A)
+leaw %SP,%A
+movw (%A),%D
+incw %D
+movw %D, (%A)
+; 14 - LT
+leaw $SP, %A
+movw (%A), %D
+decw %D
+movw %D, (%A)
+movw (%A), %A
+movw (%A), %D
+leaw $SP, %A
+subw (%A),$1,%A
+subw (%A), %D, %D
+leaw $END1 %A
+jl %D
+nop
+leaw $SP, %A
+subw (%A),$1,%A
+movw $0, (%A)
+leaw $END2, %A
+jmp
+nop
+END1:
+leaw $SP, %A
+subw (%A),$1,%A
+movw $-1,(%A)
+END2:
+; 15 - PUSH constant 891
+leaw $891,%A
+movw %A, %D
+leaw %SP,%A
+movw (%A), %A
+movw %D, (%A)
+leaw %SP,%A
+movw (%A),%D
+incw %D
+movw %D, (%A)
+; 16 - PUSH constant 891
+leaw $891,%A
+movw %A, %D
+leaw %SP,%A
+movw (%A), %A
+movw %D, (%A)
+leaw %SP,%A
+movw (%A),%D
+incw %D
+movw %D, (%A)
+; 17 - LT
+leaw $SP, %A
+movw (%A), %D
+decw %D
+movw %D, (%A)
+movw (%A), %A
+movw (%A), %D
+leaw $SP, %A
+subw (%A),$1,%A
+subw (%A), %D, %D
+leaw $END1 %A
+jl %D
+nop
+leaw $SP, %A
+subw (%A),$1,%A
+movw $0, (%A)
+leaw $END2, %A
+jmp
+nop
+END1:
+leaw $SP, %A
+subw (%A),$1,%A
+movw $-1,(%A)
+END2:
+; 18 - PUSH constant 32767
+leaw $32767,%A
+movw %A, %D
+leaw %SP,%A
+movw (%A), %A
+movw %D, (%A)
+leaw %SP,%A
+movw (%A),%D
+incw %D
+movw %D, (%A)
+; 19 - PUSH constant 32766
+leaw $32766,%A
+movw %A, %D
+leaw %SP,%A
+movw (%A), %A
+movw %D, (%A)
+leaw %SP,%A
+movw (%A),%D
+incw %D
+movw %D, (%A)
+; 20 - GT
+leaw $SP, %A
+movw (%A), %D
+decw %D
+movw %D, (%A)
+movw (%A), %A
+movw (%A), %D
+leaw $SP, %A
+subw (%A),$1,%A
+subw (%A), %D, %D
+leaw $END1 %A
+jg %D
+nop
+leaw $SP, %A
+subw (%A),$1,%A
+movw $0, (%A)
+leaw $END2, %A
+jmp
+nop
+END1:
+leaw $SP, %A
+subw (%A),$1,%A
+movw $-1,(%A)
+END2:
+; 21 - PUSH constant 32766
+leaw $32766,%A
+movw %A, %D
+leaw %SP,%A
+movw (%A), %A
+movw %D, (%A)
+leaw %SP,%A
+movw (%A),%D
+incw %D
+movw %D, (%A)
+; 22 - PUSH constant 32767
+leaw $32767,%A
+movw %A, %D
+leaw %SP,%A
+movw (%A), %A
+movw %D, (%A)
+leaw %SP,%A
+movw (%A),%D
+incw %D
+movw %D, (%A)
+; 23 - GT
+leaw $SP, %A
+movw (%A), %D
+decw %D
+movw %D, (%A)
+movw (%A), %A
+movw (%A), %D
+leaw $SP, %A
+subw (%A),$1,%A
+subw (%A), %D, %D
+leaw $END1 %A
+jg %D
+nop
+leaw $SP, %A
+subw (%A),$1,%A
+movw $0, (%A)
+leaw $END2, %A
+jmp
+nop
+END1:
+leaw $SP, %A
+subw (%A),$1,%A
+movw $-1,(%A)
+END2:
+; 24 - PUSH constant 32766
+leaw $32766,%A
+movw %A, %D
+leaw %SP,%A
+movw (%A), %A
+movw %D, (%A)
+leaw %SP,%A
+movw (%A),%D
+incw %D
+movw %D, (%A)
+; 25 - PUSH constant 32766
+leaw $32766,%A
+movw %A, %D
+leaw %SP,%A
+movw (%A), %A
+movw %D, (%A)
+leaw %SP,%A
+movw (%A),%D
+incw %D
+movw %D, (%A)
+; 26 - GT
+leaw $SP, %A
+movw (%A), %D
+decw %D
+movw %D, (%A)
+movw (%A), %A
+movw (%A), %D
+leaw $SP, %A
+subw (%A),$1,%A
+subw (%A), %D, %D
+leaw $END1 %A
+jg %D
+nop
+leaw $SP, %A
+subw (%A),$1,%A
+movw $0, (%A)
+leaw $END2, %A
+jmp
+nop
+END1:
+leaw $SP, %A
+subw (%A),$1,%A
+movw $-1,(%A)
+END2:
+; 27 - PUSH constant 57
+leaw $57,%A
+movw %A, %D
+leaw %SP,%A
+movw (%A), %A
+movw %D, (%A)
+leaw %SP,%A
+movw (%A),%D
+incw %D
+movw %D, (%A)
+; 28 - PUSH constant 31
+leaw $31,%A
+movw %A, %D
+leaw %SP,%A
+movw (%A), %A
+movw %D, (%A)
+leaw %SP,%A
+movw (%A),%D
+incw %D
+movw %D, (%A)
+; 29 - PUSH constant 53
+leaw $53,%A
+movw %A, %D
+leaw %SP,%A
+movw (%A), %A
+movw %D, (%A)
+leaw %SP,%A
+movw (%A),%D
+incw %D
+movw %D, (%A)
+; 30 - ADD
+leaw $0, %A
+movw (%A), %A
+decw %A
+movw (%A), %D
+decw %A
+addw (%A), %D, %D
+movw %D, (%A)
+addw $1, %A, %D
+leaw $0, %A
+movw %D, (%A)
+; 31 - PUSH constant 112
+leaw $112,%A
+movw %A, %D
+leaw %SP,%A
+movw (%A), %A
+movw %D, (%A)
+leaw %SP,%A
+movw (%A),%D
+incw %D
+movw %D, (%A)
+; 32 - SUB
+leaw $SP, %A
+movw (%A), %D
+decw %D
+movw %D, (%A)
+movw (%A), %A
+movw (%A), %D
+leaw $SP, %A
+subw (%A),$1, %A
+subw (%A), %D, %D
+movw %D, (%A)
+; 33 - NEG
+leaw $SP, %A
+subw (%A),$1, %A
+movw (%A), %D
+negw %D
+movw %D, (%A)
+; 34 - AND
+leaw $SP, %A
+movw (%A), %D
+decw %D
+movw %D, (%A)
+movw (%A), %A
+movw (%A), %D
+leaw $SP, %A
+subw (%A),$1, %A
+andw (%A), %D, %D
+movw %D, (%A)
+; 35 - PUSH constant 82
+leaw $82,%A
+movw %A, %D
+leaw %SP,%A
+movw (%A), %A
+movw %D, (%A)
+leaw %SP,%A
+movw (%A),%D
+incw %D
+movw %D, (%A)
+; 36 - OR
+leaw $SP, %A
+movw (%A), %D
+decw %D
+movw %D, (%A)
+movw (%A), %A
+movw (%A), %D
+leaw $SP, %A
+subw (%A),$1, %A
+orw (%A), %D, %D
+movw %D, (%A)
+leaw $SP, %A
+subw (%A),$1, %A
+movw (%A), %D
+not %D
+movw %D, (%A)
+; End
